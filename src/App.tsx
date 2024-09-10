@@ -1,35 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { UserContext } from './context'
+import { InputUser, IUser } from './types'
+import { UserList } from './component/userlist'
+import { AddUser } from './component/adduser'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default  function App() {
+  const [users,setUsers] = useState<IUser[]>([
+    {id:100, name:"Ani", age:25, salary: 250000},
+    {id:101, name:"Hayk", age:55, salary: 350000},
+    {id:102, name:"John", age:40, salary: 450000},
+    {id:103, name:"Anna", age:35, salary: 200000}
+  ])
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const removeUser = (id:number):void =>{
+    setUsers(users.filter(user=>user.id != id))
+  }
+
+  const handelAdd = (user:InputUser) => {
+    setUsers([...users, {...user, id:100+users.length}])
+  }
+
+  return <>
+    <UserContext.Provider value={{users, onDelete:removeUser, onAdd:handelAdd}}>
+      <UserList />
+      <AddUser />
+    </UserContext.Provider>
+  </>
 }
-
-export default App

@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/Event.tsx","./src/components/EventList.tsx","./src/components/Filter.tsx","./src/components/Theather.tsx","./src/lib/Api.ts","./src/lib/Context.tsx","./src/lib/InitialState.ts","./src/lib/Types.ts","./src/lib/reducer.ts"],"errors":true,"version":"5.6.2"}

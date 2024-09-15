@@ -1,11 +1,12 @@
 import React from "react"
-import { IEvent } from "../lib/Types"
+import {IEvent } from "../lib/Types"
 
 interface IProps {
-    event: IEvent
+    event: IEvent,
+    onRemove: () => void
 }
 
-export const Event:React.FC<IProps> = ({event}) => {
+export const Event:React.FC<IProps> = ({event, onRemove}) => {
    
     
     return <div>
@@ -14,5 +15,6 @@ export const Event:React.FC<IProps> = ({event}) => {
         <p>{event.date}</p>
         <strong>{event.type}</strong>
         <p>By {event.composer}</p>
+        <button onClick={onRemove}>Remove</button>
     </div>
 }

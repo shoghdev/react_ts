@@ -12,7 +12,8 @@ export interface IEvent {
 
 export interface IState {
     events: IEvent[]
-    currentFilter : FilterTypes
+    currentFilter: FilterTypes
+    removeEvent: ActionTypes.RemoveEvent
     
 }
 

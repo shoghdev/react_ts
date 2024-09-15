@@ -17,10 +17,15 @@ export const EventList:React.FC = () => {
             dispatch({type:ActionTypes.SetEvents, payload:response})
         })
    },[state.currentFilter])
+
+    
     return <div className="list">
       {
         state.events.map(event=>
-            <Event key={event.id} event={event}/>
+            <Event 
+                key={event.id} 
+                event={event} 
+                onRemove={() => dispatch({ type: ActionTypes.RemoveEvent, payload: event.id })}/>
         )
       }
     </div>

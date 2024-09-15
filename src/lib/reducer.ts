@@ -13,6 +13,12 @@ export const reducer = (state:IState, action:IAction):IState =>{
                 ...state,
                 currentFilter: action.payload as FilterTypes
             }
+
+        case ActionTypes.RemoveEvent:
+           return {
+                ...state,
+                events:state.events.filter(event =>  event.id != action.payload)
+           }
             
         default:
             return state
